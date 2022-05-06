@@ -5,32 +5,40 @@
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
-     function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+        function timestamp() { 
+            var response = document.getElementById("g-recaptcha-response");
+            if (response == null || response.value.trim() == "") {
+                var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
+                elems["ts"] = JSON.stringify(new Date().getTime());
+                document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
+            } 
+        } 
+        setInterval(timestamp, 500); 
     </script>
 </head>
 
 <body>
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+<h1>Please, fill the Lead form!</h1>
 <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
 
     <input type=hidden name='captcha_settings' value='{"keyname":"Success","fallback":"true","orgId":"00D8d000004HolX","ts":""}'>
     <input type=hidden name="oid" value="00D8d000004HolX">
     <input type=hidden name="retURL" value="https://success-motors-data.herokuapp.com/">
     
-    <label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+    <label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" required="true"/><br>
 
-<label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+<label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" required="true"/><br>
 
-<label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+<label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" required="true"/><br>
 
-<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required="true"/><br>
 
-<label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
+<label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="tel" pattern="+{0,1}[0-9]{10,12}" required="true"/><br>
 
-Product:<input  id="00N8d00000BceAu" maxlength="36" name="00N8d00000BceAu" size="20" type="text" /><br>
+<label for="product">Product</label><input  id="00N8d00000BceAu" maxlength="36" name="00N8d00000BceAu" size="20" type="text" required="true"/><br>
 
 <div class="g-recaptcha" data-sitekey="6LfsZ8sfAAAAAMBpIEw3HHqnm_QUHGGLUrxAy_R4"></div><br>
+
 <input type="submit" name="submit">
 
 </form>
